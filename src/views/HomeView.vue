@@ -10,7 +10,7 @@
   .p-4(v-if="!exams") ไม่มีข้อสอบในระบบ
   .py-2.px-4.bg-gray-50.flex
     .flex-grow
-    router-link(to="/exam") All Exam
+    router-link.py-1.px-2.bg-white.border.rounded(to="/exam") ข้อสอบทั้งหมด
 </template>
 
 <script>

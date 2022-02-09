@@ -16,7 +16,6 @@ import {
   collection,
   query,
   orderBy,
-  limit,
   getDocs,
 } from '@firebase/firestore'
 
@@ -30,7 +29,7 @@ export default {
       const examsRef = collection(getFirestore(), 'exams')
       const examsAdd = doc => this.exams.push({ id: doc.id, ...doc.data() })
 
-      return getDocs(query(examsRef, orderBy('meta.createdAt'), limit(10)))
+      return getDocs(query(examsRef, orderBy('meta.createdAt')))
         .then(snapshot => snapshot.forEach(examsAdd))
         .catch(e => alert(e))
     }

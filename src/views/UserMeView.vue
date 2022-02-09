@@ -1,31 +1,21 @@
 <template lang="pug">
-form.border.rounded.bg-white.overflow-hidden(@submit.prevent="updateProfile")
-  .flex.flex-col.max-w-xs.mx-auto
-    .text-xl.py-4 Update Profile
-    label.mb-2(for="profile-displayName") Display Name :
-    input.mb-4.border.rounded.py-1.px-2(type="text" name="username" id="profile-displayName" v-model="displayName")
-  .bg-gray-50.py-2.px-4
-    .flex.items-baseline.max-w-xs.mx-auto
-      .flex-grow
-      button.py-1.px-2.border.rounded.bg-white(type="submit") Update
-form.border.rounded.bg-white.overflow-hidden(@submit.prevent="updateAuthEmail")
-  .flex.flex-col.max-w-xs.mx-auto
-    .text-xl.py-4 Update Email
-    label.mb-2(for="auth-email") Email :
-    input.mb-4.border.rounded.py-1.px-2(type="email" name="email" id="auth-email" v-model="email")
-  .bg-gray-50.py-2.px-4
-    .flex.items-baseline.max-w-xs.mx-auto
-      .flex-grow
-      button.py-1.px-2.border.rounded.bg-white(type="submit") Update
-form.border.rounded.bg-white.overflow-hidden(@submit.prevent="updateAuthPassword")
-  .flex.flex-col.max-w-xs.mx-auto
-    .text-xl.py-4 Update Password
-    label.mb-2(for="auth-password") Password :
-    input.mb-4.border.rounded.py-1.px-2(type="password" name="password" id="auth-password" v-model="password")
-  .bg-gray-50.py-2.px-4
-    .flex.items-baseline.max-w-xs.mx-auto
-      .flex-grow
-      button.py-1.px-2.border.rounded.bg-white(type="submit") Update
+.bg-white.overflow-hidden.divide-y(class="sm:border sm:rounded")
+  .text-xl.py-2.px-4.bg-gray-50 ปรับปรุงโปรไฟล์
+  form.p-4(@submit.prevent="updateProfile")
+    .flex.border.rounded.divide-x
+      label.py-1.px-2.bg-gray-100(for="profile-displayName") ชื่อผู้ใช้งาน
+      input.py-1.px-2.flex-grow.outline-none(type="text" id="profile-displayName" v-model="displayName")
+      button.py-1.px-2(class="hover:bg-gray-50" type="submit") ปรับปรุง
+  form.p-4(@submit.prevent="updateAuthEmail")
+    .flex.border.rounded.divide-x
+      label.py-1.px-2.bg-gray-100(for="profile-email") อีเมล
+      input.py-1.px-2.flex-grow.outline-none(type="email" id="profile-email" v-model="email")
+      button.py-1.px-2(class="hover:bg-gray-50" type="submit") ปรับปรุง
+  form.p-4(@submit.prevent="updateAuthPassword")
+    .flex.border.rounded.divide-x
+      label.py-1.px-2.bg-gray-100(for="profile-password") รหัสผ่าน
+      input.py-1.px-2.flex-grow.outline-none(type="password" id="profile-password" v-model="password")
+      button.py-1.px-2(class="hover:bg-gray-50" type="submit") ปรับปรุง
 </template>
 
 <script>
@@ -50,6 +40,7 @@ export default {
       return updateProfile(getAuth().currentUser, userProfile)
         .then(() => setDoc(ref, userProfile))
         .then(() => this.setUserDisplayName(this.displayName))
+        .then(() => alert('เรียบร้อย'))
         .catch(e => alert(e))
     },
     updateAuthEmail () {

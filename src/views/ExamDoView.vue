@@ -9,7 +9,7 @@ form.border.rounded.bg-white.overflow-hidden.divide-y(@submit.prevent="submitExa
         v-for="(answer, answer_index) in question.answers"
         :key="answer_index"
         @click.prevent="setResponse(index, answer_index)"
-        :class="{'bg-gray-50': response[index] == answer_index}") {{ answer }}
+        :class="{'bg-blue-200': response[index] == answer_index}") {{ answer }}
   .flex.py-2.px-4.bg-gray-50
     .flex-grow
     button.py-1.px-2.border.rounded.bg-white(type="submit") ส่งข้อสอบ
