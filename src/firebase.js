@@ -16,7 +16,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig)
 
 // eslint-disable-next-line no-constant-condition
-if (process.env.NODE_ENV !== 'production' && false) {
+if (process.env.NODE_ENV !== 'production') {
   connectAuthEmulator(getAuth(), 'http://localhost:19099', { disableWarnings: true })
   connectFirestoreEmulator(getFirestore(), 'localhost', '18080')
 }

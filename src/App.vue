@@ -11,7 +11,7 @@
         .hidden(class="sm:block sm:flex-grow")
         router-link.py-2.px-3(class="hover:bg-gray-50" to="/user/me") {{ user?.displayName || 'User' }}
         router-link.py-2.px-3(class="hover:bg-gray-50" to="/site" v-if="user.isAdmin") ผู้ดูแล
-        a.py-2.px-3(class="hover:bg-gray-50" href="#/auth/logout" @click.prevent="signOut") ออจากระบบ
+        a.py-2.px-3(class="hover:bg-gray-50" href="#/auth/logout" @click.prevent="signOut") ออกจากระบบ
     router-view
 </template>
 
@@ -40,7 +40,6 @@ export default {
   created () {
     return Promise.resolve()
       .then(() => onAuthStateChanged(getAuth(), user => {
-
         if (!user) {
           return this.setUser(user)
         }

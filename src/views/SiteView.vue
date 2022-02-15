@@ -12,6 +12,7 @@ template(v-if="user.isAdmin")
     .bg-gray-50.px-4.py-3.text-xl ข้อสอบทั้งหมด
     .flex.divide-x(v-for="(exam, index) in exams" :key="exam.id")
       .flex-grow.py-2.px-4 {{ exam.title }}
+      router-link.py-2.px-4(:to="`/exam/${exam.id}/edit`") แก้ไข
       button.py-2.px-4(class="hover:bg-gray-50" @click.prevent="deleteExam(index)") ลบ
     .p-4(v-if="!exams") ไม่มีข้อสอบในระบบ
   .bg-white.divide-y(class="sm:border sm:rounded")
