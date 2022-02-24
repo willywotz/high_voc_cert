@@ -1,18 +1,25 @@
 <template lang="pug">
-.min-h-screen.bg-gray-100(class="sm:p-4" v-if="!user?.banned")
-  .mx-auto.max-w-2xl.space-y-4
-    .bg-white(class="sm:border sm:rounded")
-      .py-8.text-2xl.text-center {{ site.title }}
-    .bg-white(class="sm:border sm:rounded" v-if="user")
-      .flex.flex-col.divide-y(class="sm:flex-row sm:px-1 sm:divide-x sm:divide-y-0")
-        router-link.py-2.px-3(class="hover:bg-gray-50" to="/") หน้าแรก
-        router-link.py-2.px-3(class="hover:bg-gray-50" to="/exam") ข้อสอบทั้งหมด
-        router-link.py-2.px-3(class="hover:bg-gray-50" to="/my-exam") ข้อสอบของฉัน
-        .hidden(class="sm:block sm:flex-grow")
-        router-link.py-2.px-3(class="hover:bg-gray-50" to="/user/me") {{ user?.displayName || 'User' }}
-        router-link.py-2.px-3(class="hover:bg-gray-50" to="/site" v-if="user.isAdmin") ผู้ดูแล
-        a.py-2.px-3(class="hover:bg-gray-50" href="#/auth/logout" @click.prevent="signOut") ออกจากระบบ
-    router-view
+.min-h-screen(v-if="!user?.banned")
+  .bg-gray-800
+    .max-w-2xl.mx-auto.px-4.py-2
+      .leading-none.text-white.text-xl Loire
+      .leading-none.text-gray-300 ระบบคลังข้อสอบออนไลน์
+  .bg-white.border-b(v-if="user")
+    .max-w-2xl.mx-auto.px-4.py-2
+      .flex.space-x-4
+        router-link(class="hover:bg-blue-50" to="/") หน้าแรก
+        router-link(class="hover:bg-blue-50" to="/exam") ข้อสอบทั้งหมด
+        router-link(class="hover:bg-blue-50" to="/my-exam") ข้อสอบของฉัน
+        .flex-grow
+        router-link(class="hover:bg-blue-50" to="/user/me") {{ user?.displayName || 'User' }}
+        router-link(class="hover:bg-blue-50" to="/site" v-if="user.isAdmin") ผู้ดูแล
+        a(class="hover:bg-blue-50" href="#/auth/logout" @click.prevent="signOut") ออกจากระบบ
+  .bg-gray-100
+    .max-w-2xl.mx-auto.px-4.py-8
+      .text-xl.capitalize {{ $route.name }}
+  .bg-white
+    .max-w-2xl.mx-auto.p-4
+      router-view
 </template>
 
 <script>

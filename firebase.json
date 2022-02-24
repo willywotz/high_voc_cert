@@ -17,21 +17,12 @@
       }
     ]
   },
-  "storage": {
-    "rules": "storage.rules"
-  },
   "emulators": {
     "auth": {
       "port": 19099
     },
     "firestore": {
       "port": 18080
-    },
-    "hosting": {
-      "port": 15000
-    },
-    "storage": {
-      "port": 19199
     },
     "ui": {
       "enabled": true

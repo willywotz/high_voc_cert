@@ -1,5 +1,5 @@
 <template lang="pug">
-template(v-if="user.isAdmin")
+.space-y-4(v-if="user.isAdmin")
   form.border.rounded.bg-white.overflow-hidden(@submit.prevent="updateSite")
     .flex.flex-col.px-4
       .text-xl.py-4 ปรับปรุงเว็บ
